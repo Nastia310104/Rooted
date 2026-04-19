@@ -1,8 +1,9 @@
-package main;
+package code;
 
 import javax.swing.JFrame;
+import code.core.GamePanel;
 
-public class Rooted {
+public class Main {
 
     public static void main(String[] args) {
         JFrame window = new JFrame();

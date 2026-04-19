@@ -1,4 +1,4 @@
-package main;
+package code.core;
 
 import javax.swing.JPanel;
 
