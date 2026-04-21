@@ -2,6 +2,7 @@ package code;
 
 import javax.swing.JFrame;
 
+import code.asset.Tile;
 import code.core.GamePanel;
 import code.core.InputHandler;
 import code.entity.Player;
@@ -21,7 +22,8 @@ public class GameLauncher {
         InputHandler inputHandler = new InputHandler();
         JFrame window = new JFrame();
         Player player = new Player(inputHandler);
-        GamePanel panel = new GamePanel(graphicsEnvironment.getMaximumWindowBounds(), player);
+        Tile tile = new Tile(700, 700, true, true, inputHandler, player);
+        GamePanel panel = new GamePanel(graphicsEnvironment.getMaximumWindowBounds(), player, tile);
 
         // TODO: add functionality to choose character before - or on time of - creation
         player.chooseCharacter(2);

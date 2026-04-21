@@ -10,14 +10,19 @@ import java.awt.event.MouseListener;
 public class InputHandler implements MouseListener, KeyListener {
 
     public boolean leftPressed, rightPressed, scrollUP, scrollDown;
+    public int mouseX, mouseY;
 
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1){
+            mouseX = e.getX();
+            mouseY = e.getY();
             leftPressed = true;
         }
 
         if (e.getButton() == MouseEvent.BUTTON3){
+            mouseX = e.getX();
+            mouseY = e.getY();
             rightPressed = true;
         }
     }
@@ -35,17 +40,14 @@ public class InputHandler implements MouseListener, KeyListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
     }
 
     @Override

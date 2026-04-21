@@ -47,6 +47,10 @@ public class Human extends Entity{
             frameIndex = (frameIndex + 1) % 2 + actionIndex;
             frameCounter = 0;
         }
+
+        if (moving) {
+            move();
+        }
     }
 
     public void draw(Graphics2D graphics2D) {
@@ -81,6 +85,30 @@ public class Human extends Entity{
             case "go_back":
                 actionIndex = 10;
                 break;
+        }
+    }
+
+    // DONT FORGET STUPID ME if and else if check
+    public void move() {
+        if ((positionX + width / 2) != targetPositionX) {
+            if (positionX >= targetPositionX) {
+                positionX -= speed;
+                action = "go_left";
+            } else if (positionX <= targetPositionX - speed) {
+                positionX += speed;
+                action = "go_right";
+            }
+        } else if (positionY != targetPositionY) {
+            if (positionY >= targetPositionY) {
+                positionY -= speed;
+                action = "go_back";
+            } else if (positionY <= targetPositionY - speed) {
+                positionY += speed;
+                action = "go_front";
+            }
+        } else {
+            moving = false;
+            action = "idle_front";
         }
     }
 }

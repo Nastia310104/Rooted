@@ -11,19 +11,18 @@ public class Player extends Human {
         this.positionX = 500;
         this.positionY = 500;
 
-        this.speed = 10;
+        this.speed = 4;
 
         this.inputHandler = inputHandler;
     }
 
     public void update() {
         if (inputHandler.leftPressed) {
-            this.positionX -= this.speed;
-            action = "go_left";
-        } else if (inputHandler.rightPressed) {
-            this.positionX += this.speed;
-            action = "go_right";
+            this.targetPositionX = inputHandler.mouseX;
+            this.targetPositionY = inputHandler.mouseY;
+            this.moving = true;
         }
+
         super.update();
     }
 

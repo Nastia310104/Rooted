@@ -1,24 +1,28 @@
 package code.core;
 
+import code.asset.Tile;
 import code.entity.Player;
 import code.util.Utilities;
 
 import javax.swing.*;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 
 //Draws and runs game loop
 public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
     Player player;
+    Tile tile;
 
     //Class constructor
-    public GamePanel(Rectangle maximumWindowBounds, Player player) {
+    public GamePanel(Rectangle maximumWindowBounds, Player player, Tile tile) {
         this.setPreferredSize(new Dimension(maximumWindowBounds.width, maximumWindowBounds.height));
         this.setBackground(Color.white);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
         this.player = player;
+        this.tile = tile;
     }
 
     public void startGameThread() {
@@ -58,7 +62,10 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
+        tile.update();
         player.update();
+        player.move();
+
     }
 
     public void paintComponent(Graphics graphics) {
@@ -67,6 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D graphics2D = (Graphics2D)graphics;
 
         player.draw(graphics2D);
+        tile.draw(graphics2D);
 
     }
 }
