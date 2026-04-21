@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import code.core.GamePanel;
 import code.core.InputHandler;
+import code.entity.Player;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
@@ -17,9 +18,13 @@ public class GameLauncher {
         GraphicsDevice graphicsDevice =
                 graphicsEnvironment.getDefaultScreenDevice();
 
-        JFrame window = new JFrame();
-        GamePanel panel = new GamePanel(graphicsEnvironment.getMaximumWindowBounds());
         InputHandler inputHandler = new InputHandler();
+        JFrame window = new JFrame();
+        Player player = new Player(inputHandler);
+        GamePanel panel = new GamePanel(graphicsEnvironment.getMaximumWindowBounds(), player);
+
+        // TODO: add functionality to choose character before - or on time of - creation
+        player.chooseCharacter(2);
 
         graphicsDevice.setFullScreenWindow(window);
 

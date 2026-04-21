@@ -15,8 +15,6 @@ public class InputHandler implements MouseListener, KeyListener {
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1){
             leftPressed = true;
-
-            Utilities.position += 500;
         }
 
         if (e.getButton() == MouseEvent.BUTTON3){
