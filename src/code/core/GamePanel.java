@@ -1,5 +1,6 @@
 package code.core;
 
+import code.entity.Player;
 import code.util.Utilities;
 
 import javax.swing.*;
@@ -9,14 +10,15 @@ import java.awt.*;
 //Draws and runs game loop
 public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
+    Player player;
 
     //Class constructor
-    public GamePanel(Rectangle maximumWindowBounds) {
+    public GamePanel(Rectangle maximumWindowBounds, Player player) {
         this.setPreferredSize(new Dimension(maximumWindowBounds.width, maximumWindowBounds.height));
         this.setBackground(Color.white);
         this.setDoubleBuffered(true);
         this.setFocusable(true);
-
+        this.player = player;
     }
 
     public void startGameThread() {
@@ -56,7 +58,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-
+        player.update();
     }
 
     public void paintComponent(Graphics graphics) {
@@ -64,8 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D graphics2D = (Graphics2D)graphics;
 
-        graphics2D.setColor(Color.pink);
-        graphics2D.fillRect(Utilities.position, 500, Utilities.TILE_SIZE, Utilities.TILE_SIZE);
-        graphics2D.dispose();
+        player.draw(graphics2D);
+
     }
 }
